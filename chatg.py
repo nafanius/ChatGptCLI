@@ -72,7 +72,7 @@ def start():
     This function initializes the conversation and handles user input.
     It provides options for changing the prefix, starting a new topic, and quitting the program.
     """
-    info = "Welcome to ChatGPT!\nq - exit\nn - ew topic\n0 - reset prefix \n00 - reset prefix and start new topic \n\
+    info = "Welcome to ChatGPT!\nq - exit\nn - new topic\n0 - reset prefix \n00 - reset prefix and start new topic \n\
 e - translate to English\np - translate to Polish\nrv - translate to Russian and provide usage examples\n\
 r - translate to Russian\ns - save history conversation\nl - load istory conversation \nc - clear\nh - display help"
     print(info)
@@ -127,8 +127,6 @@ r - translate to Russian\ns - save history conversation\nl - load istory convers
                   To exit the mode, type - 00
                   To change the topic without changing the mode - 0
                   Help - h""")
-            print("""Я буду переводить всё на ПОЛЬСКИЙ язык\nдля выхода из режима набeрите - 00\nдля смены темы без смены \
-режима - 0\nсправка  - h""")
             continue
         elif user_input.lower() == "rv":
             prefix = "Переведи  и объясни смысл и приведи примеры на англизском языке с переводами: "
