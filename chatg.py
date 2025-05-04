@@ -16,7 +16,7 @@ client = OpenAI(
 )
 
 
-def format_rich(text, role="ChatGPT"):
+def format_rich(text):
 
     formatted_text = Markdown(text)
 
@@ -82,11 +82,15 @@ r - translate to Russian\ns - save history conversation\nl - load istory convers
 
         if user_input.lower() == "n":
             start_new_topic()
+            print("""Start new Topic
+                  To exit the mode, type - 00
+                  To change the topic without changing the mode - 0
+                  Help - h""")
             continue
         elif user_input.lower() == "q":
             break
         elif user_input.lower() == "r":
-            prefix = "Переведи на Русский: "
+            prefix = "Переведи на Русский только то что написано: "
             start_new_topic()
             print("""I will translate everything into Russian
                   To exit the mode, type - 00
@@ -103,12 +107,20 @@ r - translate to Russian\ns - save history conversation\nl - load istory convers
             continue
         elif user_input.lower() == "0":
             prefix = ""
+            print("""Removed context
+                  To exit the mode, type - 00
+                  To change the topic without changing the mode - 0
+                  Help - h""")
             continue
         elif user_input.lower() == "c":
             os.system('clear')
             continue
         elif user_input.lower() == "00":
             start_new_topic()
+            print("""Removed context and cleard topic
+                  To exit the mode, type - 00
+                  To change the topic without changing the mode - 0
+                  Help - h""")
             prefix = ""
             continue
         elif user_input.lower() == "s":
@@ -129,7 +141,7 @@ r - translate to Russian\ns - save history conversation\nl - load istory convers
                   Help - h""")
             continue
         elif user_input.lower() == "rv":
-            prefix = "Переведи  и объясни смысл и приведи примеры на англизском языке с переводами: "
+            prefix = "Переведи, объясни смысл и приведи примеры на англизском языке с переводами: "
             start_new_topic()
             print("""I will translate everything into Russian and provide examples of usage
                   To exit the mode, type - 00
