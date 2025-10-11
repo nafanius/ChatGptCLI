@@ -78,8 +78,19 @@ e - translate to English\np - translate to Polish\nrv - translate to Russian and
 r - translate to Russian\ns - save history conversation\nl - load istory conversation \nc - clear\nh - display help"
     print(info)
     global prefix
+
     while True:
-        user_input = input("\033[1;32mВы:\033[0m ")
+        def get_multiline_input(prompt="\033[1;32mВы:\033[0m "):
+            print(prompt)
+            lines = []
+            while True:
+                line = input()
+                if line == "":
+                    break  # Завершаем ввод, если введена пустая строка
+                lines.append(line)
+
+            return "\n".join(lines)
+        user_input = get_multiline_input()
 
         if user_input.lower() == "n":
             start_new_topic()
