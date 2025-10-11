@@ -87,8 +87,7 @@ r - translate to Russian\ns - save history conversation\nl - load istory convers
     @bindings.add('f12')                                                                                                                                                                                              
     def _(event):                                                                                                                                                                                                     
         """Clear the current input buffer."""                                                                                                                                                                         
-        event.current_buffer.clear()                                                                                                                                                                                  
-        print("\nBuffer cleared!")                                                                                                                                                                                    
+        event.current_buffer.reset()                                                                                                                                                                                  
                                                                                                                                                                                                                     
     session = PromptSession(key_bindings=bindings)  
 
