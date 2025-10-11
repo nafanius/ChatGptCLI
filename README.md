@@ -38,6 +38,35 @@ Launch the CLI with:
 chatgpt_cli
 ```
 
+### How it use?
+
+After launching the application, you can start typing your questions or commands. Here are some examples:
+
+```bash
+Welcome to ChatGPT!
+q - exit
+n - new topic
+0 - reset prefix
+00 - reset prefix and start new topic
+e - translate to English
+p - translate to Polish
+rv - translate to Russian and provide usage examples
+r - translate to Russian
+s - save history conversation
+l - load istory conversation
+c - clear
+h - display help
+You:
+What is the capital of France?
+<tap two times enter>
+
+ChatGPT:
+The capital of France is Paris.
+
+You:
+
+```
+
 ### Available Commands
 
 | Command | Description                                                             |
@@ -60,6 +89,7 @@ chatgpt_cli
 - [`openai`](https://pypi.org/project/openai/)
 - [`rich`](https://pypi.org/project/rich/)
 - `readline` (usually included in Unix-based systems)
+- `prompt-toolkit` (optional, for enhanced input handling)
 
 ## License
 
