@@ -5,11 +5,12 @@
 import os
 import readline
 import save_load_history
-from credentials import gpt_api_key
 from rich.console import Console
 from rich.markdown import Markdown
 
 from openai import OpenAI
+
+gpt_api_key = os.getenv('GPT_API_KEY')
 
 client = OpenAI(
     api_key=gpt_api_key,
@@ -160,6 +161,5 @@ r - translate to Russian\ns - save history conversation\nl - load istory convers
         print("")
 
 
-# Пример использования
 if __name__ == "__main__":
     start()
