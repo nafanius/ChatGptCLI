@@ -11,33 +11,31 @@
 
 ## Installation
 
-1. **Clone the repository**
+1. **installation**
 
-   ```bash
-   git clone https://github.com/nafanius/ChatGptCLI.git
-   cd chatg-cli
-   ```
+```bash
+pip install naf-chatgpt-cli
+# or
+git clone https://github.com/nafanius/ChatGptCLI.git
+cd chatgptcli
+pip install .
+# or
+poetry install
 
-2. **Install dependencies**
+```
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+2. **Set up your OpenAI API key**
 
-3. **Set up your OpenAI API key**
-
-   Create a file named `credentials.py` in the project root:
-
-   ```python
-   gpt_api_key = "your_openai_api_key"
-   ```
+```bash
+export GPT_API_KEY=sk_your_key
+```
 
 ## Usage
 
 Launch the CLI with:
 
 ```bash
-python3 chatg.py
+chatgpt_cli
 ```
 
 ### Available Commands
@@ -62,12 +60,6 @@ python3 chatg.py
 - [`openai`](https://pypi.org/project/openai/)
 - [`rich`](https://pypi.org/project/rich/)
 - `readline` (usually included in Unix-based systems)
-
-## Example `credentials.py`
-
-```python
-gpt_api_key = "your_openai_api_key"
-```
 
 ## License
 

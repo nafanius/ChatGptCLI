@@ -4,7 +4,7 @@
 
 import os
 import readline
-import save_load_history
+from . import save_load_history
 from rich.console import Console
 from rich.markdown import Markdown
 
