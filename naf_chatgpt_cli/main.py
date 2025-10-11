@@ -7,6 +7,9 @@ import readline
 from . import save_load_history
 from rich.console import Console
 from rich.markdown import Markdown
+                                                                                                                                                                                                                   
+from prompt_toolkit import PromptSession                                                                                                                                                                          
+from prompt_toolkit.key_binding import KeyBindings
 
 from openai import OpenAI
 
@@ -79,17 +82,31 @@ r - translate to Russian\ns - save history conversation\nl - load istory convers
     print(info)
     global prefix
 
+    bindings = KeyBindings()                                                                                                                                                                                          
+                                                                                                                                                                                                                   
+    @bindings.add('f12')                                                                                                                                                                                              
+    def _(event):                                                                                                                                                                                                     
+        """Clear the current input buffer."""                                                                                                                                                                         
+        event.current_buffer.clear()                                                                                                                                                                                  
+        print("\nBuffer cleared!")                                                                                                                                                                                    
+                                                                                                                                                                                                                    
+    session = PromptSession(key_bindings=bindings)  
+
     while True:
         def get_multiline_input(prompt="\033[1;32mВы:\033[0m "):
             print(prompt)
             lines = []
             while True:
-                line = input()
-                if line == "":
-                    break  # Завершаем ввод, если введена пустая строка
-                lines.append(line)
-
+                try:   
+                    line = session.prompt("")
+                    if line == "":
+                        break  
+                    lines.append(line)
+                except  KeyboardInterrupt:
+                    lines = []
+                
             return "\n".join(lines)
+        
         user_input = get_multiline_input()
 
         if user_input.lower() == "n":
