@@ -4,7 +4,7 @@
 
 import os
 import readline
-from . import save_load_history
+import save_load_history
 from rich.console import Console
 from rich.markdown import Markdown
 from time import time
@@ -52,7 +52,7 @@ def ask_chatgpt(question):
 
     # request to the API with conversation history and context
     response = client.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-5",
         messages=conversation_history
     )
 

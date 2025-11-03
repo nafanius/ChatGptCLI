@@ -28,6 +28,7 @@ poetry install
 
 ```bash
 export GPT_API_KEY=sk_your_key
+export SAVE_PATH_GPT_HISTORY=/path/to/your/history # optional, default is saved in user's home directory
 ```
 
 ## Usage
@@ -38,7 +39,7 @@ Launch the CLI with:
 chatgpt_cli
 ```
 
-### How it use?
+### How it use:
 
 After launching the application, you can start typing your questions or commands. Here are some examples:
 
@@ -58,7 +59,7 @@ c - clear
 h - display help
 You:
 What is the capital of France?
-<tap two times enter>
+<tap double enter>
 
 ChatGPT:
 The capital of France is Paris.
