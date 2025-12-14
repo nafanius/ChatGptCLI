@@ -4,7 +4,7 @@
 
 import os
 import readline
-import save_load_history
+from  naf_chatgpt_cli.save_load_history import save_to_file, load_from_file
 from rich.console import Console
 from rich.markdown import Markdown
 from rich.syntax import Syntax
@@ -228,11 +228,11 @@ r - translate to Russian\ns - save history conversation\nl - load istory convers
                 """
             continue
         elif user_input.strip().lower() == "s":
-            save_load_history.save_to_file(conversation_history, "history.json")
+            save_to_file(conversation_history, "history.json")
             print("History saved to history.json")
             continue
         elif user_input.strip().lower() == "l":
-            save_load_history.load_from_file("history.json")
+            load_from_file("history.json")
             print("History loaded from history.json")
             continue
         elif user_input.strip().lower() == "p":
