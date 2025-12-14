@@ -1,7 +1,7 @@
 [project]
 name = "naf_chatgpt_cli"
-version = "0.2.0"
-description = "This is a CLI chatGPT for Linux with beautiful highlighting gpt-5 with saving history "
+version = "0.2.1"
+description = "This is a CLI chatGPT for Linux with so beautiful highlighting gpt-5 "
 authors = [
     {name = "ilin",email = "fizruk.ilin@gmail.com"}
 ]
