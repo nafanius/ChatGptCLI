@@ -4,7 +4,7 @@
 
 import os
 import readline
-from  naf_chatgpt_cli.save_load_history import save_to_file, load_from_file
+from naf_chatgpt_cli.save_load_history import save_to_file, load_from_file
 from rich.console import Console
 from rich.markdown import Markdown
 from rich.syntax import Syntax
@@ -17,6 +17,7 @@ from prompt_toolkit.document import Document
 
 from openai import OpenAI
 
+console = Console()
 gpt_api_key = os.getenv("GPT_API_KEY")
 
 client = OpenAI(
@@ -26,9 +27,36 @@ client = OpenAI(
 
 def format_rich(text):
 
-    return Syntax(
-        text, "markdown", theme="monokai", line_numbers=False, word_wrap=True, padding=0
-    )
+    text = text.replace("\x00", "").rstrip()
+    pos = 0
+
+    # Найти все блоки ```
+    for match in re.finditer(r"```.*?```", text):
+        # Markdown до блока
+        pre_text = text[pos : match.start()].strip()
+        if pre_text:
+            console.print(Markdown(pre_text))
+
+        # code in ```
+        code_text = match.group(1).rstrip()
+        full_code = f"```{code_text}```"
+        console.print(
+            Syntax(
+                full_code,
+                "markdown",
+                theme="monokai",
+                line_numbers=False,
+                word_wrap=True,
+                padding=0,
+            )
+        )
+        pos = match.end()
+
+    # Markdown after code
+    post_text = text[pos:].strip()
+    if post_text:
+        console.print(Markdown(post_text))
+
 
 conversation_history = []
 
@@ -261,9 +289,8 @@ r - translate to Russian\ns - save history conversation\nl - load istory convers
 
         response = ask_chatgpt(user_input)
 
-        console = Console()
         print("\033[1;32mChatGPT:\033[0m")
-        console.print(format_rich(response))
+        format_rich(response)
         print("")
 
 
